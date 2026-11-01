@@ -1,11 +1,33 @@
 body {
-    background-color: rgb(41, 140, 165);
+    background-color: rgb(10, 72, 87);
     color: rgb(240, 240, 11);
 }
 main {
     display: flex;
     flex-direction: column;
     justify-content: center;   
+    align-items: center;
     padding-top: 50px;
     padding-inline: 100px;
+}
+.time-input {
+    all: unset;
+    border-radius: 2px;
+    border: solid 2px rgba(231, 163, 16, 0.897);
+    background-color: rgba(194, 177, 27, 0.253);
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.clear-button {
+    all: unset;
+    width: 75px;
+    height: 30px;
+    text-align: center;
+    background-color: rgba(11, 5, 19, 0.651);
+    color: rgba(19, 203, 209, 0.658);
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 5px;
+    cursor: pointer;
 }
