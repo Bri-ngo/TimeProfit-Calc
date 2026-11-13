@@ -6,8 +6,9 @@ let minutes = 0;
 let totalDays = 0;
 let totalHours = 0;
 let totalMinutes = 0;
+const regex = /^\d{1,2}:\d{1,2}$/; 
 
-function TimeCalculation (input) {
+function TimeCalculation (input) { 
     let splitting = input.split(":");
     //first split string convert to number 
     let InputHours = Number(splitting[0]);
@@ -25,12 +26,20 @@ function TimeCalculation (input) {
     totalDays = Math.trunc(calculated_hours / 24);
 }
 
-time.addEventListener("keydown", function(event){
+time.addEventListener("keydown", function(event){ 
     if (event.key === "Enter") {
-        TimeCalculation(time.value);
-        time.value = "";
-        result.textContent = `${totalDays} days, ${totalHours} hours and ${totalMinutes} minutes`
-    }
+        if (regex.test(time.value)) 
+            {
+                TimeCalculation(time.value);
+                time.value = "";
+                result.textContent = `${totalDays} days, ${totalHours} hours and ${totalMinutes} minutes`
+            }
+        else
+        {
+            time.value = ""
+            return result.textContent = `Wrong time input, try again.`
+        }
+    } 
 })
 clear_button.addEventListener("click", function(event){
     hours = minutes = totalHours = totalMinutes = 0;
