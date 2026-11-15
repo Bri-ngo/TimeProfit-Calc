@@ -12,7 +12,7 @@ function getHoursMinutes (time) {
     let inputs;
     return inputs = [inputHours, inputMinutes];
 }
-function calcTime (inputs) { 
+function calculateTime (inputs) { 
     hours += inputs[0];
     minutes += inputs[1];
     //calculating total hours and minutes
