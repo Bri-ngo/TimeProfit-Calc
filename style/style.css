@@ -24,10 +24,14 @@ main {
     all: unset;
     width: 75px;
     height: 30px;
+    background-color:rgba(235, 235, 13, 0.945);
+    color: rgba(0, 0, 0, 0.822);
     text-align: center;
-    background-color: rgba(11, 5, 19, 0.651);
-    color: rgba(19, 203, 209, 0.658);
     border-bottom-right-radius: 5px;
     border-top-left-radius: 5px;
     cursor: pointer;
+}
+.clear-button:hover {
+    background-color: rgba(11, 5, 19, 0.651);
+    color: rgba(70, 242, 248, 0.658);
 }

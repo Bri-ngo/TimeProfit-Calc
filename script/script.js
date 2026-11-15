@@ -23,23 +23,47 @@ function calcTime (inputs) {
     totalDays = Math.trunc(calculated_hours / 24);
 }
 
-time.addEventListener("keydown", function(event){ 
-    if (event.key === "Enter") {
-        if (regex.test(time.value)) 
+function createResult (timeInput) {
+        if (timeInput.key === "Enter") {
+        if (regex.test(timeInput.target.value)) 
             {
-                calcTime(getHoursMinutes(time.value));
-                time.value = "";
-                result.textContent = `${totalDays} days, ${totalHours} hours and ${totalMinutes} minutes`
+                calcTime(getHoursMinutes(timeInput.target.value));
+                timeInput.target.value = "";
+                return result.textContent = `${totalDays} days, ${totalHours} hours and ${totalMinutes} minutes`
             }
         else
         {
-            time.value = ""
+            timeInput.target.value = ""
             return result.textContent = `Wrong time input, try again.`
         }
     } 
-})
+}
 
-clear_button.addEventListener("click", function(event){
+function clearBox () {
     hours = minutes = totalHours = totalMinutes = 0;
     result.textContent = "";
-})
+}
+
+time.addEventListener("keydown", createResult)
+clear_button.addEventListener("click", clearBox)
+
+// time.addEventListener("keydown", function(event){ 
+//     if (event.key === "Enter") {
+//         if (regex.test(time.value)) 
+//             {
+//                 calcTime(getHoursMinutes(time.value));
+//                 time.value = "";
+//                 return result.textContent = `${totalDays} days, ${totalHours} hours and ${totalMinutes} minutes`
+//             }
+//         else
+//         {
+//             time.value = ""
+//             return result.textContent = `Wrong time input, try again.`
+//         }
+//     } 
+// })
+
+// clear_button.addEventListener("click", function(event){
+//     hours = minutes = totalHours = totalMinutes = 0;
+//     result.textContent = "";
+// })
