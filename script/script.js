@@ -3,7 +3,7 @@ let clear_button = document.querySelector('.clear-button');
 let result = document.querySelector('.hours_minutes_result');
 let warning = document.querySelector('.warning');
 let hours = 0, minutes = 0, totalDays = 0, totalHours = 0, totalMinutes = 0;
-const regex = /^\d{1,2}:\d{1,2}$/; 
+const regex = /^\d{1,2}:\d{1,2}$/; //so that input is only in the form of 2d:2d
 
 function getHoursMinutes (time) {
     let splitting = time.split(":");
@@ -40,6 +40,11 @@ function createResult (timeInput) {
     } 
 }
 
+function clearBox () { // to clear the result
+    hours = minutes = totalHours = totalMinutes = 0;
+    result.textContent = "";
+}
+
 function createWarning (message) {
     warning.textContent = message;
     setTimeout(clearWarning, 6000); //to clear the warning message after 6 seconds
@@ -47,11 +52,6 @@ function createWarning (message) {
 
 function clearWarning () {
     warning.textContent = "";
-}
-
-function clearBox () {
-    hours = minutes = totalHours = totalMinutes = 0;
-    result.textContent = "";
 }
 
 time_input.addEventListener("keydown", createResult)
