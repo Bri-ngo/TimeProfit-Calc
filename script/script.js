@@ -1,6 +1,7 @@
-let time = document.querySelector('.time-input');
+let time_input = document.querySelector('.time-input');
 let clear_button = document.querySelector('.clear-button');
-let result = document.querySelector('.hours_minutes');
+let result = document.querySelector('.hours_minutes_result');
+let warning = document.querySelector('.warning');
 let hours = 0, minutes = 0, totalDays = 0, totalHours = 0, totalMinutes = 0;
 const regex = /^\d{1,2}:\d{1,2}$/; 
 
@@ -34,9 +35,18 @@ function createResult (timeInput) {
         else
         {
             timeInput.target.value = ""
-            return result.textContent = `Wrong time input, try again.`
+            return createWarning(`Wrong time input, try again.`);
         }
     } 
+}
+
+function createWarning (message) {
+    warning.textContent = message;
+    setTimeout(clearWarning, 6000); //to clear the warning message after 6 seconds
+}
+
+function clearWarning () {
+    warning.textContent = "";
 }
 
 function clearBox () {
@@ -44,26 +54,5 @@ function clearBox () {
     result.textContent = "";
 }
 
-time.addEventListener("keydown", createResult)
+time_input.addEventListener("keydown", createResult)
 clear_button.addEventListener("click", clearBox)
-
-// time.addEventListener("keydown", function(event){ 
-//     if (event.key === "Enter") {
-//         if (regex.test(time.value)) 
-//             {
-//                 calcTime(getHoursMinutes(time.value));
-//                 time.value = "";
-//                 return result.textContent = `${totalDays} days, ${totalHours} hours and ${totalMinutes} minutes`
-//             }
-//         else
-//         {
-//             time.value = ""
-//             return result.textContent = `Wrong time input, try again.`
-//         }
-//     } 
-// })
-
-// clear_button.addEventListener("click", function(event){
-//     hours = minutes = totalHours = totalMinutes = 0;
-//     result.textContent = "";
-// })
